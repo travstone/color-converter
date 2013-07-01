@@ -1,0 +1,82 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+	
+	var sources = [
+   		{'r':180,'g':127,'b':115,'a':0.75},
+		{'r':180,'g':127,'b':115,'a':0.6},
+		{'r':180,'g':127,'b':115,'a':0.5},
+		{'r':180,'g':127,'b':115,'a':0.4},
+		{'r':180,'g':127,'b':115,'a':0.3},
+		{'r':180,'g':127,'b':115,'a':0.2},
+		
+		
+		{'r':109,'g':148,'b':148,'a':0.75},
+		{'r':109,'g':148,'b':148,'a':0.6},
+		{'r':109,'g':148,'b':148,'a':0.5},
+		{'r':109,'g':148,'b':148,'a':0.4},
+		{'r':109,'g':148,'b':148,'a':0.3},
+		{'r':109,'g':148,'b':148,'a':0.2},
+		
+		
+		{'r':124,'g':132,'b':169,'a':0.75},
+		{'r':124,'g':132,'b':169,'a':0.6},
+		{'r':124,'g':132,'b':169,'a':0.5},
+		{'r':124,'g':132,'b':169,'a':0.4},
+		{'r':124,'g':132,'b':169,'a':0.3},
+		{'r':124,'g':132,'b':169,'a':0.2},
+		
+
+		{'r':164,'g':112,'b':142,'a':0.75},
+		{'r':164,'g':112,'b':142,'a':0.6},
+		{'r':164,'g':112,'b':142,'a':0.5},
+		{'r':164,'g':112,'b':142,'a':0.4},
+		{'r':164,'g':112,'b':142,'a':0.3},
+		{'r':164,'g':112,'b':142,'a':0.2},
+		
+		
+		{'r':166,'g':166,'b':107,'a':0.75},
+		{'r':166,'g':166,'b':107,'a':0.6},
+		{'r':166,'g':166,'b':107,'a':0.5},
+		{'r':166,'g':166,'b':107,'a':0.4},
+		{'r':166,'g':166,'b':107,'a':0.3},
+		{'r':166,'g':166,'b':107,'a':0.2},
+		
+		
+		{'r':200,'g':200,'b':200,'a':0.75},
+		{'r':200,'g':200,'b':200,'a':0.6},
+		{'r':200,'g':200,'b':200,'a':0.5},
+		{'r':200,'g':200,'b':200,'a':0.4},
+		{'r':200,'g':200,'b':200,'a':0.3},
+		{'r':200,'g':200,'b':200,'a':0.2},
+
+	];
+	
+	var sLength = sources.length;
+	
+	for(var i=0;i<sLength;i++){
+		
+		var bgColor = {'r':255,'g':255,'b':255};
+		var target = {};
+		function convertRGBA(original,bgColor,target){
+			target.r = Math.floor(((1 - original.a) * bgColor.r) + (original.a * original.r));
+			target.g = Math.floor(((1 - original.a) * bgColor.g) + (original.a * original.g));
+			target.b = Math.floor(((1 - original.a) * bgColor.b) + (original.a * original.b));
+			return target;
+		}
+		
+		var result = convertRGBA(sources[i],bgColor,target);
+		
+		document.write('<div style="padding:0 8px;border-bottom:1px solid #999;position:relative;z-index:10;background-color:rgba(' + sources[i].r + ',' + sources[i].g + ',' + sources[i].b + ',' + sources[i].a + ');">Orginal <input style="position:relative;left:80px; padding:4px;" type="text" value="rgba(' + sources[i].r + ',' + sources[i].g + ',' + sources[i].b + ',' + sources[i].a + ')" /></div>');
+		
+		document.write('<div style="padding:0 8px;margin-bottom:12px;position:relative;z-index:10;background-color:rgb(' + result.r + ',' + result.g + ',' + result.b + ');">Changed <input style="position:relative;left:70px; padding:4px;"  type="text" value="rgb(' + result.r + ',' + result.g + ',' + result.b + ')" /></div>');
+	}
+
+</script>
+
+<div style="background-color:#bbb; width:100px; height:2400px;position:absolute;left:380px;top:0;z-index:1;">Something to confirm alpha
+</div>
+</body>
+</html>
